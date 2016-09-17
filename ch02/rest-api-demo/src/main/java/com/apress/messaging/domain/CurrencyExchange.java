@@ -2,7 +2,8 @@ package com.apress.messaging.domain;
 
 public class CurrencyExchange {
 
-	private String base = "USD";
+	public static final String BASE_CODE = "USD";
+	private String base;
 	private String date;
 	private Rate[] rates;
 	

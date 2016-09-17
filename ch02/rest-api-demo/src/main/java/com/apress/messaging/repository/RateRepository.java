@@ -11,4 +11,5 @@ import com.apress.messaging.domain.Rate;
 @Repository
 public interface RateRepository  extends JpaRepository<Rate,String>{
 		List<Rate> findByDate(Date date);
+		Rate findByDateAndCode(Date date,String code);
 }
