@@ -16,8 +16,6 @@ import com.apress.messaging.repository.RateRepository;
 
 @Service
 public class CurrencyConversionService {
-
-	//private static final Logger log = LoggerFactory.getLogger(CurrencyConversionService.class);
 	
 	@Autowired
 	RateRepository repository;
