@@ -40,13 +40,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-
-		<!-- Groovy Templates -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-groovy-templates</artifactId>
-		</dependency>
-
+		
 		<!-- DB dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
