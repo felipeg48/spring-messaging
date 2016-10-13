@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.apress.messaging.domain.Rate;
-import com.apress.messaging.repository.RateRepository;
+import com.apress.messaging.service.CurrencyService;
 
 @SpringBootApplication
 public class RestApiEventsApplication {
@@ -18,12 +18,12 @@ public class RestApiEventsApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner data(RateRepository repository) {
+	public CommandLineRunner data(CurrencyService service) {
 		return (args) -> {
-			repository.save(new Rate("EUR",0.88857F,new Date()));
-			repository.save(new Rate("JPY",102.17F,new Date()));
-			repository.save(new Rate("MXN",19.232F,new Date()));
-			repository.save(new Rate("GBP",0.75705F,new Date()));
+			service.saveRate(new Rate("EUR",0.88857F,new Date()));
+			service.saveRate(new Rate("JPY",102.17F,new Date()));
+			service.saveRate(new Rate("MXN",19.232F,new Date()));
+			service.saveRate(new Rate("GBP",0.75705F,new Date()));
 		};
 	}
 }

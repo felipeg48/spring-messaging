@@ -35,7 +35,20 @@ public class CodeLogger {
 			for(Object obj : args){
 				str.append(" Param: " + obj.getClass().getSimpleName());
 				str.append(NEXT_LINE);
-				str.append(" Value: " + obj);
+				
+				try {
+					String methodToCall = codeLog.callMethodWithNoParamsToString();
+					
+					if("toString".equals(methodToCall))
+						str.append(" Value: " + obj);
+					else
+						str.append(" Value: " + 
+							obj.getClass()
+							   .getDeclaredMethod(methodToCall, new Class[]{})
+							   .invoke(obj,new Object[]{}));
+				} catch (Exception e) {
+					str.append(" Value: [ERROR]> " + e.getMessage());
+				} 
 				str.append(NEXT_LINE);
 			}
 		}

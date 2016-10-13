@@ -20,6 +20,7 @@ import com.apress.messaging.domain.CurrencyConversion;
 import com.apress.messaging.domain.CurrencyExchange;
 import com.apress.messaging.domain.Rate;
 import com.apress.messaging.service.CurrencyConversionService;
+import com.apress.messaging.service.CurrencyService;
 
 @RestController
 @RequestMapping("/currency")
@@ -29,21 +30,24 @@ public class CurrencyController {
 	private static final Logger log = LoggerFactory.getLogger(CurrencyController.class);
 	
 	@Autowired 
-	CurrencyConversionService service;
+	CurrencyConversionService conversionService;
+	
+	@Autowired 
+	CurrencyService service;
 	
 	@RequestMapping("/latest")
 	public ResponseEntity<CurrencyExchange> getLatest(@RequestParam(name="base",defaultValue=CurrencyExchange.BASE_CODE)String base) throws Exception{
-		return new ResponseEntity<CurrencyExchange>(new CurrencyExchange(base,new SimpleDateFormat("yyyy-MM-dd").format(new Date()),service.calculateByCode(base,new Date())),HttpStatus.OK);
+		return new ResponseEntity<CurrencyExchange>(new CurrencyExchange(base,new SimpleDateFormat("yyyy-MM-dd").format(new Date()),conversionService.calculateByCode(base,new Date())),HttpStatus.OK);
 	}
 	
 	@RequestMapping("/{date}")
 	public ResponseEntity<CurrencyExchange> getByDate(@PathVariable("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date,@RequestParam(name="base",defaultValue=CurrencyExchange.BASE_CODE)String base) throws Exception{
-		return new ResponseEntity<CurrencyExchange>(new CurrencyExchange(base,new SimpleDateFormat("yyyy-MM-dd").format(date),service.calculateByCode(base,date)),HttpStatus.OK);
+		return new ResponseEntity<CurrencyExchange>(new CurrencyExchange(base,new SimpleDateFormat("yyyy-MM-dd").format(date),conversionService.calculateByCode(base,date)),HttpStatus.OK);
 	}
 	
 	@RequestMapping("/{amount}/{base}/to/{code}")
 	public ResponseEntity<CurrencyConversion> conversion(@PathVariable("amount")Float amount,@PathVariable("base")String base,@PathVariable("code")String code) throws Exception{
-		CurrencyConversion conversionResult = service.convertFromTo(base, code, amount);
+		CurrencyConversion conversionResult = conversionService.convertFromTo(base, code, amount);
 		return new ResponseEntity<CurrencyConversion>(conversionResult,HttpStatus.OK);
 	}
 	
