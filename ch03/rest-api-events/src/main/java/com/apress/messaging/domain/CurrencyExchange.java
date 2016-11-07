@@ -1,5 +1,7 @@
 package com.apress.messaging.domain;
 
+import java.util.Arrays;
+
 public class CurrencyExchange {
 
 	public static final String BASE_CODE = "USD";
@@ -32,7 +34,9 @@ public class CurrencyExchange {
 	public void setRates(Rate[] rates) {
 		this.rates = rates;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "CurrencyExchange [base=" + base + ", date=" + date + ", rates=" + Arrays.toString(rates) + "]";
+	}
 }
