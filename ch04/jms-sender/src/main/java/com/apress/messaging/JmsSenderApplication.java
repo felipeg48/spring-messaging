@@ -1,15 +1,12 @@
 package com.apress.messaging;
 
-import java.util.Date;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.apress.messaging.config.JMSProperties;
-import com.apress.messaging.domain.Rate;
-import com.apress.messaging.jms.RateSender;
+import com.apress.messaging.jms.SimpleSender;
 
 @SpringBootApplication
 public class JmsSenderApplication {
