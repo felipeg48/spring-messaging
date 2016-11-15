@@ -18,7 +18,40 @@ public class JMSConfig {
         configurer.configure(factory, connectionFactory);
         return factory;
     }
+	
+	@Configuration
+	public static class ListenerConfig implements JmsListenerConfigurer{
+
+		private MessageListener queueListener;
+		private String destinationName;
+		
+		public ListenerConfig(MessageListener queueListener, @Value("${apress.jms.queue}") final String destinationName){
+			this.queueListener = queueListener;
+			this.destinationName = destinationName;
+		}
+		
+		@Override
+		public void configureJmsListeners(JmsListenerEndpointRegistrar registrar) {
+			SimpleJmsListenerEndpoint endpoint = new SimpleJmsListenerEndpoint();
+	        endpoint.setId(UUID.randomUUID().toString());
+	        endpoint.setDestination(this.destinationName);
+	        endpoint.setMessageListener(this.queueListener);
+	        registrar.registerEndpoint(endpoint);
+		}
+	}
 	*/
+	
+	/*
+	@Bean
+	public DefaultMessageListenerContainer customMessageListenerContainer(ConnectionFactory connectionFactory, MessageListener queueListener, @Value("${apress.jms.queue}") final String destinationName){
+		DefaultMessageListenerContainer listener = new DefaultMessageListenerContainer();
+		listener.setConnectionFactory(connectionFactory);
+		listener.setDestinationName(destinationName);
+		listener.setMessageListener(queueListener);
+		return listener;
+	}
+	*/
+	
 	
 	@Bean 
     public MessageConverter jacksonJmsMessageConverter() {

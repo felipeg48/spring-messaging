@@ -1,9 +1,8 @@
 package com.apress.messaging.jms;
 
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class AnnotatedReceiver {
 
 	@JmsListener(destination = "${apress.jms.queue}")

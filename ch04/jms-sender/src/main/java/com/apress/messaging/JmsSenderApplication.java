@@ -17,7 +17,6 @@ public class JmsSenderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JmsSenderApplication.class, args);
 	}
-	
 	/*
 	@Bean
 	CommandLineRunner simple(JMSProperties props, SimpleSender sender){
@@ -26,14 +25,15 @@ public class JmsSenderApplication {
 		};
 	}
 	*/
-
+	
 	@Bean
 	CommandLineRunner process(JMSProperties props, RateSender sender){
 		return args -> {
 			sender.sendCurrency(props.getRateQueue(), new Rate("EUR",0.88857F,new Date()));
-			sender.sendCurrency(props.getRateQueue(), new Rate("JPY",102.17F,new Date()));
-			sender.sendCurrency(props.getRateQueue(), new Rate("MXN",19.232F,new Date()));
-			sender.sendCurrency(props.getRateQueue(), new Rate("GBP",0.75705F,new Date()));
+//			sender.sendCurrency(props.getRateQueue(), new Rate("JPY",102.17F,new Date()));
+//			sender.sendCurrency(props.getRateQueue(), new Rate("MXN",19.232F,new Date()));
+//			sender.sendCurrency(props.getRateQueue(), new Rate("GBP",0.75705F,new Date()));
 		};
 	}
+	
 }
