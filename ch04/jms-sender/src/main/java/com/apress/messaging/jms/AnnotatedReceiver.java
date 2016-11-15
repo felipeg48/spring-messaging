@@ -4,7 +4,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SimpleReceiver {
+public class AnnotatedReceiver {
 
 	@JmsListener(destination = "${apress.jms.queue}")
 	public void processMessage(String content) {
