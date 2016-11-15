@@ -15,7 +15,7 @@ public class RateJmsConfiguration {
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(MessageType.TEXT);
-        converter.setTypeIdPropertyName("_type");
+        converter.setTypeIdPropertyName("_class_"); // This value can be anything, it will save the JSON class name and it must be the same for sender/receiver
         return converter;
     }
 	

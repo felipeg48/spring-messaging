@@ -6,11 +6,10 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.stereotype.Component;
 
 import com.apress.messaging.domain.Rate;
 
-@Component
+//@Component
 public class RateReplyReceiver {
 
 	
