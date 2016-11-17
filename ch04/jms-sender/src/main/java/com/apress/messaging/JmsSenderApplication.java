@@ -14,6 +14,7 @@ public class JmsSenderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JmsSenderApplication.class, args);
 	}
+	
 	@Bean
 	CommandLineRunner simple(JMSProperties props, SimpleSender sender){
 		return args -> {
