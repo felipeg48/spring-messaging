@@ -1,13 +1,7 @@
 package com.apress.messaging.jms;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 import com.apress.messaging.annotation.Log;
@@ -24,14 +18,14 @@ public class RateJmsReceiver {
 		this.service = service;
 	}
 	
-	/* For a simple Receiver, no reply
+	/* For a simple Receiver, no reply */
 	@JmsListener(destination = "${rate.jms.queue-name}")
 	@Log(printParamsValues=true)
 	public void processRate(Rate rate){
 		this.service.saveRate(rate);
 	}
-	*/
-		
+	
+	/*
 	@JmsListener(destination = "${rate.jms.queue-name}")
 	@SendTo("${rate.jms.reply-queue-name}")
 	@Log(printParamsValues=true)
@@ -42,4 +36,5 @@ public class RateJmsReceiver {
 				.setHeader("DATE", new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
 				.build();
 	}
+	*/
 }
