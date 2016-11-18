@@ -8,6 +8,7 @@ public class JMSProperties {
 	private String queue;
 	private String rateQueue;
 	private String rateReplyQueue;
+	private String topic;
 
 	public String getQueue() {
 		return queue;
@@ -26,6 +27,12 @@ public class JMSProperties {
 	}
 	public void setRateReplyQueue(String rateReplyQueue) {
 		this.rateReplyQueue = rateReplyQueue;
+	}
+	public String getTopic() {
+		return topic;
+	}
+	public void setTopic(String topic) {
+		this.topic = topic;
 	}
 	
 }

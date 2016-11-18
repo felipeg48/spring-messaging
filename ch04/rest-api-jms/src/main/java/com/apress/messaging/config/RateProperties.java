@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class RateProperties {
 
 	private String queueName;
+	private String replyQueueName;
 
 	public String getQueueName() {
 		return queueName;
@@ -14,5 +15,12 @@ public class RateProperties {
 	public void setQueueName(String queueName) {
 		this.queueName = queueName;
 	}
-	
+
+	public String getReplyQueueName() {
+		return replyQueueName;
+	}
+
+	public void setReplyQueueName(String replyQueueName) {
+		this.replyQueueName = replyQueueName;
+	}
 }

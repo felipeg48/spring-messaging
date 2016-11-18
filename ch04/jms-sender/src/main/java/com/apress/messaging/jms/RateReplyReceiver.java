@@ -1,5 +1,7 @@
 package com.apress.messaging.jms;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.jms.annotation.JmsListener;
@@ -16,10 +18,15 @@ public class RateReplyReceiver {
 	@JmsListener(destination = "${apress.jms.rate-queue}")
 	@SendTo("${apress.jms.rate-reply-queue}")
 	public Message<String> processRate(Rate rate){
-		//Some Stuff
+		
+		//Process the Rate and return any significant value
+		
 		return MessageBuilder
 				.withPayload("PROCCESSED")
+				.setHeader("CODE", rate.getCode())
+				.setHeader("RATE", rate.getRate())
 				.setHeader("ID", UUID.randomUUID().toString())
+				.setHeader("DATE", new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
 				.build();
 	}
 	

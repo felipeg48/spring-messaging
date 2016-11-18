@@ -20,10 +20,12 @@ public class RateSender {
 		this.jmsTemplate.convertAndSend(destination,rate);	
 	}
 	
-	/*
+	/* This code is for the reply-to-queue section
+
 	@JmsListener(destination="${apress.jms.rate-reply-queue}")
-	public void process(String body,@Header("ID") String id){
+	public void process(String body,@Header("CODE") String code){
 		
 	}
+
 	*/
 }
