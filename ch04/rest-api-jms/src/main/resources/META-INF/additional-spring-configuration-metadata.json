@@ -1,5 +1,5 @@
 {"properties": [{
-  "name": "rata.jms.queue-name",
+  "name": "rate.jms.queue-name",
   "type": "java.lang.String",
   "description": "The Rate Queue name"
 },{
