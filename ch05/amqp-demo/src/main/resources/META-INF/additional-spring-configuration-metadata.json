@@ -1,0 +1,21 @@
+{"properties": [{
+  "name": "apress.amqp.queue",
+  "type": "java.lang.String",
+  "description": "The AMQP Queue name"
+},{
+  "name": "apress.amqp.reply-queue",
+  "type": "java.lang.String",
+  "description": "The AMQP Reply Queue name"
+},{
+  "name": "apress.amqp.rate-queue",
+  "type": "java.lang.String",
+  "description": "The Rate Queue name"
+},{
+  "name": "apress.amqp.exchange",
+  "type": "java.lang.String",
+  "description": "The AMQP Exchange Queue name, default value set to the Default Exchange"
+},{
+  "name": "apress.amqp.rate-exchange",
+  "type": "java.lang.String",
+  "description": "The Rate Exhcnage name, default value set to the Default Exchange"
+}]}
