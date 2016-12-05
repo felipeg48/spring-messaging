@@ -18,7 +18,7 @@ public class AmqpDemoApplication {
 	/* Uncomment out this for a Simple Producer */
 	
 	@Bean
-	CommandLineRunner simple(@Value("${apress.amqp.exchange:}")String exchange, @Value("apress.amqp.queue")String routingKey, Producer producer){
+	CommandLineRunner simple(@Value("${apress.amqp.exchange:}")String exchange, @Value("${apress.amqp.queue}")String routingKey, Producer producer){
 		return args -> {
 			producer.sendMessage(exchange, routingKey, "HELLO AMQP!");
 		};

@@ -3,9 +3,11 @@ package com.apress.messaging.aop;
 import java.lang.reflect.Parameter;
 import java.util.stream.IntStream;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
@@ -17,48 +19,67 @@ import org.springframework.stereotype.Component;
 public class AMQPAudit {
 	private static final String DASH_LINE = "===================================";
 	private static final String NEXT_LINE = "\n";
-	private static final Logger log =LoggerFactory.getLogger("AMQPAudit");
-	
+	private static final Logger log = LoggerFactory.getLogger("AMQPAudit");
+
 	@Pointcut("execution(* com.apress.messaging.amqp.*.*(..))")
-	public void logAMQP(){};
-	
+	public void logAMQP() {
+	};
+
 	@Around("logAMQP()")
-	public Object jmsAudit(ProceedingJoinPoint pjp) throws Throwable{
-		Object[] args = pjp.getArgs();
-		Parameter[]  parameters = ((MethodSignature)pjp.getSignature()).getMethod().getParameters();
-		
+	public Object amqpAudit(ProceedingJoinPoint pjp) throws Throwable {
 		StringBuilder builder = new StringBuilder(NEXT_LINE);
+		printBefore(builder, pjp);
+
+		// Method Execution
+		Object object = pjp.proceed(pjp.getArgs());
+		
+		printAfter(builder, object);
+		log.info(builder.toString());
+
+		return object;
+	}
+
+	@Before("execution(* com.apress.messaging.listener.*.*(..))")
+	public void auditListeners(JoinPoint joinPoint) {
+		StringBuilder builder = new StringBuilder(NEXT_LINE);
+		printBefore(builder, joinPoint);
+		builder.append(NEXT_LINE);
+		builder.append(DASH_LINE);
+		log.info(builder.toString());
+	}
+
+	private void printBefore(StringBuilder builder, JoinPoint jp) {
+		Object[] args = jp.getArgs();
+		Parameter[] parameters = ((MethodSignature) jp.getSignature()).getMethod().getParameters();
+		
 		builder.append(DASH_LINE);
 		builder.append(NEXT_LINE);
 		builder.append("[BEFORE]");
 		builder.append(NEXT_LINE);
 		builder.append("Method: ");
-		builder.append(pjp.getSignature().getName());
+		builder.append(jp.getSignature().getName());
 		builder.append(NEXT_LINE);
 		builder.append("Params: ");
 		builder.append(NEXT_LINE);
-		IntStream.range(0,args.length).forEach(index -> {
-			builder.append("> ");
-			builder.append(parameters[index].getName());
-			builder.append(": ");
-			builder.append(args[index]);
-			builder.append(NEXT_LINE);
-		});
-		
-		
-		
-		Object object = pjp.proceed(args);
-		
+
+		if (null != args && null != parameters) {
+			IntStream.range(0, args.length).forEach(index -> {
+				builder.append("> ");
+				builder.append(parameters[index].getName());
+				builder.append(": ");
+				builder.append(args[index]);
+				builder.append(NEXT_LINE);
+			});
+		}
+	}
+
+	private void printAfter(StringBuilder builder, Object object) {
 		builder.append(NEXT_LINE);
 		builder.append("[AFTER]");
 		builder.append(NEXT_LINE);
 		builder.append("Return: ");
-		builder.append(object==null?"void/null":object);
+		builder.append(object == null ? "void/null" : object);
 		builder.append(NEXT_LINE);
 		builder.append(DASH_LINE);
-		
-		log.info(builder.toString());
-		
-		return object;
 	}
 }

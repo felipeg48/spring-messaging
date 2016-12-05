@@ -3,6 +3,18 @@
   "type": "java.lang.String",
   "description": "The AMQP Queue name"
 },{
+  "name": "apress.amqp.error-queue",
+  "type": "java.lang.String",
+  "description": "The AMQP Error Queue name"
+},{
+  "name": "apress.amqp.error-exchange",
+  "type": "java.lang.String",
+  "description": "The AMQP Error Exchange name"
+},{
+  "name": "apress.amqp.error-routing-key",
+  "type": "java.lang.String",
+  "description": "The Error Routing Key"
+},{
   "name": "apress.amqp.reply-queue",
   "type": "java.lang.String",
   "description": "The AMQP Reply Queue name"
