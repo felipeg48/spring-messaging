@@ -6,13 +6,14 @@ import java.util.UUID;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.Message;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.support.MessageBuilder;
 
 //@Component
 public class RpcServer {
 
 	@RabbitListener(queues="${apress.amqp.queue}")
-	//@SendTo("${apress.amqp.reply-queue}") //Used when the client diesn't set replyTo.
+	@SendTo("${apress.amqp.reply-queue}") //Used when the client doesn't set replyTo.
 	public Message<String> process(String message){
 		
 		//More Processing here...
