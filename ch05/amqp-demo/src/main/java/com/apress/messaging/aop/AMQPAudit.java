@@ -56,6 +56,9 @@ public class AMQPAudit {
 		builder.append(NEXT_LINE);
 		builder.append("[BEFORE]");
 		builder.append(NEXT_LINE);
+		builder.append(" Class: ");
+		builder.append(jp.getTarget().getClass().getName());
+		builder.append(NEXT_LINE);
 		builder.append("Method: ");
 		builder.append(jp.getSignature().getName());
 		builder.append(NEXT_LINE);

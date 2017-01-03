@@ -7,6 +7,7 @@ public class AMQPProperties {
 
 	private String queue;
 	private String replyQueue;
+	private String replyExchangeQueue;
 	private String exchange = "";
 	private String errorQueue;
 	private String errorExchange = "";
@@ -28,6 +29,14 @@ public class AMQPProperties {
 
 	public void setReplyQueue(String replyQueue) {
 		this.replyQueue = replyQueue;
+	}
+
+	public String getReplyExchangeQueue() {
+		return replyExchangeQueue;
+	}
+
+	public void setReplyExchangeQueue(String replyExchangeQueue) {
+		this.replyExchangeQueue = replyExchangeQueue;
 	}
 
 	public String getRateQueue() {

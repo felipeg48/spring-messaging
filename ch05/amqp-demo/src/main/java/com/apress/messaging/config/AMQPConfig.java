@@ -23,6 +23,39 @@ public class AMQPConfig {
 	}
 	*/
 	
+	
+	/* Uncomment this out for a RPC with a fixed reply-to queue 
+	
+	@Autowired
+	ConnectionFactory connectionFactory;
+	
+	@Value("${apress.amqp.reply-queue}")
+	String replyQueueName;
+		
+	@Bean
+	public RabbitTemplate fixedReplyQueueRabbitTemplate() {
+		RabbitTemplate template = new RabbitTemplate(connectionFactory);
+		template.setReplyAddress(replyQueueName);
+		template.setReplyTimeout(60000L);
+		return template;
+	}
+	
+	@Bean
+	public SimpleMessageListenerContainer replyListenerContainer() {
+		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+		container.setConnectionFactory(connectionFactory);
+		container.setQueues(replyQueue());
+		container.setMessageListener(fixedReplyQueueRabbitTemplate());
+		return container;
+	}
+	
+	@Bean
+	public Queue replyQueue(){
+		return new Queue(replyQueueName,false);
+	}
+	*/
+	
+	
 	//Converters
 	
 	/*

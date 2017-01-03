@@ -16,7 +16,6 @@ public class AmqpDemoApplication {
 	}
 	
 	/* Uncomment out this for a Simple Producer */
-	
 	@Bean
 	CommandLineRunner simple(@Value("${apress.amqp.exchange:}")String exchange, @Value("${apress.amqp.queue}")String routingKey, Producer producer){
 		return args -> {
@@ -24,6 +23,16 @@ public class AmqpDemoApplication {
 		};
 	}
 	
+	
+	/* Uncomment out this for a RPC Client/Server 
+	@Bean
+	CommandLineRunner simpleRPC(@Value("${apress.amqp.exchange:}")String exchange, @Value("${apress.amqp.queue}")String routingKey, RpcClient client){
+		return args -> {
+			Object result = client.sendMessage(exchange, routingKey, "HELLO AMQP/RPC!");
+			assert result!=null;
+		};
+	}
+	*/
 	
 	/*
 	@Bean

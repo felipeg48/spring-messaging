@@ -19,6 +19,10 @@
   "type": "java.lang.String",
   "description": "The AMQP Reply Queue name"
 },{
+  "name": "apress.amqp.reply-exchange-queue",
+  "type": "java.lang.String",
+  "description": "The AMQP Reply to an Exchange based on the routing key. Values: exchange/routingkey  or /routingkey or /"
+},{
   "name": "apress.amqp.rate-queue",
   "type": "java.lang.String",
   "description": "The Rate Queue name"
