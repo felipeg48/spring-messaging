@@ -11,6 +11,7 @@ import com.apress.messaging.domain.InvoiceWithTax;
 import com.apress.messaging.domain.Item;
 import com.apress.messaging.domain.Order;
 
+//@Component
 @RabbitListener(id="multi", queues = "${apress.amqp.queue}")
 public class MultiListenerService {
 
