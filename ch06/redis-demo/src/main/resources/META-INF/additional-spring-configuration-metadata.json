@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "apress.redis.topic",
+  "type": "java.lang.String",
+  "description": "The Redis Topic name"
+}]}
