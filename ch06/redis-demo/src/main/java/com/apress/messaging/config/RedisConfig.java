@@ -15,7 +15,7 @@ import com.apress.messaging.redis.Subscriber;
 @EnableConfigurationProperties(SimpleRedisProperties.class)
 public class RedisConfig {
 
-	
+	// Simple Message Listener
 	@Bean
 	public RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
 			MessageListenerAdapter listenerAdapter, @Value("${apress.redis.topic}") String topic) {
@@ -49,7 +49,7 @@ public class RedisConfig {
 	/* This section is about using the JSON format Serialization.
 	@Bean
 	public RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
-			MessageListenerAdapter rateListenerAdapter, @Value("${apress.redis.topic}") String topic) {
+			MessageListenerAdapter rateListenerAdapter, @Value("${apress.redis.rate}") String topic) {
 
 		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);		
