@@ -8,6 +8,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +21,13 @@ public class WebSocketsAudit {
 	private static final String NEXT_LINE = "\n";
 	private static final Logger log = LoggerFactory.getLogger("RedisAudit");
 
+	@Pointcut("execution(public * com.apress.messaging.controller.*.*(..))")
+	public void logWebSocket(){}
 	
-	@Around("execution(public * com.apress.messaging.controller.*.*(..))")
+	@Pointcut("execution(* com.apress.messaging.web.socket.*.*(..))")
+	public void logLlWebSocket(){}
+	
+	@Around("logWebSocket() || logLlWebSocket()")
 	public Object webSocketAudit(ProceedingJoinPoint pjp) throws Throwable {
 		StringBuilder builder = new StringBuilder(NEXT_LINE);
 		printBefore(builder, pjp);
