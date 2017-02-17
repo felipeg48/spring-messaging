@@ -73,10 +73,10 @@
 			};
 				
 			$("#send").click(function(){
-				var chatMessage = {}
-				chatMessage["user"] = $("#user").val();
-				chatMessage["message"] = $("#message").val();
-				connection.send(JSON.stringify(chatMessage));
+				var message = {}
+				message["user"] = $("#user").val();
+				message["message"] = $("#message").val();
+				connection.send(JSON.stringify(message));
 			});
 			
 		});
