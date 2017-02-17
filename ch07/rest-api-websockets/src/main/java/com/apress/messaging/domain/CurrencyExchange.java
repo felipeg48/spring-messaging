@@ -9,6 +9,8 @@ public class CurrencyExchange {
 	private String date;
 	private Rate[] rates;
 	
+	public CurrencyExchange(){}
+	
 	public CurrencyExchange(String base, String date, Rate[] rates) {
 		super();
 		this.base = base;

@@ -6,7 +6,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 public class ServletInitializer extends SpringBootServletInitializer {
 
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(RestApiAMQPApplication.class);
+		return application.sources(RestApiWebSocketsApplication.class);
 	}
 
 }

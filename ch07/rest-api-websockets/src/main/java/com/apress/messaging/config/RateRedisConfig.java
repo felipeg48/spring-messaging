@@ -1,6 +1,7 @@
 package com.apress.messaging.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import com.apress.messaging.redis.RateRedisSubscriber;
 @EnableConfigurationProperties(RateRedisProperties.class)
 public class RateRedisConfig {
 
+	@ConditionalOnProperty("rate.redis.topic") // This is useful when there is no provided properties in this case the rate.redis.topic.
 	@Bean
 	public RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
 			MessageListenerAdapter rateListenerAdapter, @Value("${rate.redis.topic}") String topic) {

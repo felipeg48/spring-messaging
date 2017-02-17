@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,9 @@ public class CurrencyController {
 	@Autowired 
 	CurrencyService service;
 	
+	@Autowired
+	private SimpMessagingTemplate webSocket;
+	
 	@RequestMapping("/latest")
 	public ResponseEntity<CurrencyExchange> getLatest(@RequestParam(name="base",defaultValue=CurrencyExchange.BASE_CODE)String base){
 		return new ResponseEntity<CurrencyExchange>(new CurrencyExchange(base,new SimpleDateFormat("yyyy-MM-dd").format(new Date()),conversionService.calculateByCode(base,new Date())),HttpStatus.OK);
@@ -57,6 +61,10 @@ public class CurrencyController {
 			final Date date = new SimpleDateFormat("yyyy-MM-dd").parse(currencyExchange.getDate());
 			final Rate[] rates = currencyExchange.getRates();
 			service.saveRates(rates,date);
+			
+			//Web Socket Messaging
+			webSocket.convertAndSend("/rate/new", currencyExchange);
+			
 		}catch(Exception ex){
 			log.error(ex.getMessage());
 			throw ex;
