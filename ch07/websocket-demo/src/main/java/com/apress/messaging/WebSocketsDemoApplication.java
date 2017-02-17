@@ -11,7 +11,7 @@ public class WebSocketsDemoApplication {
 		SpringApplication.run(WebSocketsDemoApplication.class, args);
 	}
 	
-	/* Enable this code if you want to send a Message to a WebSocket server using Spring */
+	/* Enable this code if you want to send a Message to a WebSocket server using Spring low-level WebSocket classes */
 	
 	/*
 	@Bean
@@ -27,7 +27,7 @@ public class WebSocketsDemoApplication {
 	}
 	*/
 	
-	/* Enable this if you need to use a WebSocket client from a Code */
+	/* Enable this if you need to use a WebSocket client from a Code using SockJS/STOMP */
 	
 	/*
 	@Bean
