@@ -1,19 +1,7 @@
 package com.apress.messaging;
 
-import java.net.URI;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketHttpHeaders;
-import org.springframework.web.socket.WebSocketMessage;
-import org.springframework.web.socket.WebSocketSession;
-import org.springframework.web.socket.client.standard.StandardWebSocketClient;
-
-import com.apress.messaging.web.socket.LlWebSocketHandler;
 
 
 @SpringBootApplication
@@ -23,6 +11,9 @@ public class WebSocketsDemoApplication {
 		SpringApplication.run(WebSocketsDemoApplication.class, args);
 	}
 	
+	/* Enable this code if you want to send a Message to a WebSocket server using Spring */
+	
+	/*
 	@Bean
 	CommandLineRunner sendLlws(LlWebSocketHandler handler){
 		return args -> {
@@ -34,7 +25,7 @@ public class WebSocketsDemoApplication {
 			session.sendMessage(message);
 		};
 	}
-	
+	*/
 	
 	/* Enable this if you need to use a WebSocket client from a Code */
 	

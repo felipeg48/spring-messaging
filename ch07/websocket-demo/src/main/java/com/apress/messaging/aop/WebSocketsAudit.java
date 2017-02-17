@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class WebSocketsAudit {
 	private static final String DASH_LINE = "===================================";
 	private static final String NEXT_LINE = "\n";
-	private static final Logger log = LoggerFactory.getLogger("RedisAudit");
+	private static final Logger log = LoggerFactory.getLogger(WebSocketsAudit.class);
 
 	@Pointcut("execution(public * com.apress.messaging.controller.*.*(..))")
 	public void logWebSocket(){}

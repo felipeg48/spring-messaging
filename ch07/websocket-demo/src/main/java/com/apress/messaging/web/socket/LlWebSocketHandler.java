@@ -8,17 +8,17 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 @Component
 public class LlWebSocketHandler extends TextWebSocketHandler{
 
-	WebSocketSession session = null;
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		super.afterConnectionEstablished(session);
-		this.session = session;
 	}
 
 	@Override
-	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+	public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		System.out.println(">>>> " + message);
+		
+		//Enable this if you want to return the Message to the Client
 		//session.sendMessage(message);
 	}	
 	
