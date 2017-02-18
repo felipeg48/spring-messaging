@@ -20,7 +20,7 @@ public class RateWebSocketsConfig extends AbstractWebSocketMessageBrokerConfigur
 	
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint(props.getEndpoint()).withSockJS();
+		registry.addEndpoint(props.getEndpoint()).setAllowedOrigins("*").withSockJS();
 		
 	}
 
