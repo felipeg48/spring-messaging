@@ -60,9 +60,8 @@
 	<script>
 		
 		$(function(){
-			var stompClient = null;
 			var socket = new SockJS('http://localhost:8080/stomp-endpoint');
-		    stompClient = Stomp.over(socket);
+		    var stompClient = Stomp.over(socket);
 		    
 		    stompClient.connect({}, function (frame) {
 		    	console.log('Connected: ' + frame);
