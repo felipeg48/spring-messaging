@@ -7,6 +7,8 @@ public class SpiProperties {
 
 	private String directory;
 	private String filePattern;
+	private String exchange = "";
+	private String queue = "spi.rate";
 
 	public String getDirectory() {
 		return directory;
@@ -22,6 +24,22 @@ public class SpiProperties {
 
 	public void setFilePattern(String filePattern) {
 		this.filePattern = filePattern;
+	}
+
+	public String getExchange() {
+		return exchange;
+	}
+
+	public void setExchange(String exchange) {
+		this.exchange = exchange;
+	}
+
+	public String getQueue() {
+		return queue;
+	}
+
+	public void setQueue(String queue) {
+		this.queue = queue;
 	}
 
 }

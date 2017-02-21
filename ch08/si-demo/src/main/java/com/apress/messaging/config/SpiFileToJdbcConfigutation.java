@@ -26,7 +26,7 @@ public class SpiFileToJdbcConfigutation {
 	}
 	
 	@Bean
-	public IntegrationFlow fileFlow(){
+	public IntegrationFlow fileToJdbcFlow(){
 		return IntegrationFlows.from(Files
 				.inboundAdapter(new File(this.props.getDirectory()))
 					.preventDuplicates(true)

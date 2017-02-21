@@ -12,7 +12,6 @@ public class SpiDemoApplication {
 		.run(args);
 	}
 	
-	
 	/* Enable this for a Simple Example */
 	
 	/*
@@ -21,6 +20,21 @@ public class SpiDemoApplication {
 		return args -> {
 			Message<String> message = MessageBuilder.withPayload("World").build();
 			input.send(message);
+		};
+	}
+	*/
+	
+	
+	/* Enable this for the Rate to RabbitMQ, make sure you have RabbitMQ up and running */
+	
+	/*
+	@Bean
+	CommandLineRunner processRate(MessageChannel amqpChannel){
+		return args -> {
+			amqpChannel.send(MessageBuilder.withPayload(new Rate("EUR",0.88857F,new Date())).build());
+			amqpChannel.send(MessageBuilder.withPayload(new Rate("JPY",102.17F,new Date())).build());
+			amqpChannel.send(MessageBuilder.withPayload(new Rate("MXN",19.232F,new Date())).build());
+			amqpChannel.send(MessageBuilder.withPayload(new Rate("GBP",0.75705F,new Date())).build());
 		};
 	}
 	*/
