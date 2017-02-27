@@ -10,8 +10,16 @@ public class SimpleMessageHandler {
 		
 	}
 	
+	/* Enable this for a concrete Person Rate */
 	/*
 	public void process(Person message){
+		
+	}
+	*/
+	
+	/* Enable this for a concrete Message Rate */
+	/*
+	public void process(Rate message){
 		
 	}
 	*/
