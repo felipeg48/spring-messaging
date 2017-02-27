@@ -2,13 +2,21 @@ package com.apress.messaging;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.integration.config.EnableIntegration;
 
+/* Enable the following annotation to use the XML with the SpiFileToJdbcConfiguration examples */ 
+//@ImportResource("META-INF/spring/integration/spi-file-to-jdbc.xml")
+
+/* Enable the following annotation to use the XML configuration. Comment out all the @Configuration and @Component files. */ 
+//@ImportResource({"META-INF/spring/integration/spi-context.xml"})
+
+@EnableIntegration
 @SpringBootApplication
 public class SpiDemoApplication {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(SpiDemoApplication.class)
-		.web(false) // True for using a Web app and the /h2-console endpoint.
+		.web(true) // True for using a Web app and the /h2-console endpoint.
 		.run(args);
 	}
 	
@@ -18,8 +26,7 @@ public class SpiDemoApplication {
 	@Bean
 	CommandLineRunner process(MessageChannel input){
 		return args -> {
-			Message<String> message = MessageBuilder.withPayload("World").build();
-			input.send(message);
+			input.send(MessageBuilder.withPayload("World").build());
 		};
 	}
 	*/

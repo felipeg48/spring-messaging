@@ -3,7 +3,6 @@ package com.apress.messaging.config;
 import java.io.File;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.core.Pollers;
@@ -11,7 +10,6 @@ import org.springframework.integration.dsl.file.Files;
 import org.springframework.integration.dsl.support.Transformers;
 import org.springframework.integration.file.splitter.FileSplitter;
 
-import com.apress.messaging.domain.Person;
 import com.apress.messaging.integration.PersonConverter;
 
 //@Configuration
@@ -48,9 +46,10 @@ public class SpiFileConfigutation {
 	}
 	
 	
+	/*
 	@ServiceActivator(inputChannel="input")
 	public void process(Person message){
 		
 	}
-	
+	*/
 }

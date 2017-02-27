@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.apress.messaging.domain.Person;
 
+//@IntegrationConverter
 @Component
 public class PersonConverter implements Converter<String, Person> {
 

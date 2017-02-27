@@ -12,8 +12,10 @@ import org.springframework.integration.file.splitter.FileSplitter;
 
 import com.apress.messaging.integration.PersonConverter;
 
-//@Configuration
+/* You can enable the next statement here or in the main application, not in both*/
 //@ImportResource("META-INF/spring/integration/spi-file-to-jdbc.xml")
+
+//@Configuration
 //@EnableConfigurationProperties(SpiProperties.class)
 public class SpiFileToJdbcConfigutation {
 

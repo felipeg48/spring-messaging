@@ -10,4 +10,9 @@ public class SimpleMessageHandler {
 		
 	}
 	
+	/*
+	public void process(Person message){
+		
+	}
+	*/
 }
