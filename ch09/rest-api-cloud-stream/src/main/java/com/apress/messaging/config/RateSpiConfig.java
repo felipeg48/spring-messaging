@@ -7,9 +7,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.amqp.Amqp;
@@ -25,8 +23,8 @@ import org.springframework.messaging.MessageChannel;
 import com.apress.messaging.domain.Rate;
 import com.apress.messaging.integration.RateServiceActivator;
 
-@Configuration
-@EnableConfigurationProperties(RateSpiProperties.class)
+//@Configuration
+//@EnableConfigurationProperties(RateSpiProperties.class)
 public class RateSpiConfig {
 	
 	
