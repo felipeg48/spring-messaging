@@ -15,7 +15,8 @@ public class SimpleProcessor {
 	}
 	
 	
-	/* You can use either @StreamListener and @SendTo (together) or just the @Transformer */
+	/* You can use either @StreamListener and @SendTo (together) or just the @Transformer 
+	   In this example the method uses the generic Message<?> abother way to consumer messages */
 	
 	/*
 	@Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)

@@ -17,9 +17,13 @@ public class SimpleSource {
 	
 	@Bean
 	@InboundChannelAdapter(channel=Source.OUTPUT)
+	//@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "5000", maxMessagesPerPoll = "3"))
 	public MessageSource<String> simpleText(){
 		
 		return () -> MessageBuilder.withPayload("Hello at " +  simpleDate.format(new Date())).build();
+		
+		
+		/* Enable this code if you want to implement the MessageSource it self, just comment out the previous line *
 		
 		/*
 		return new MessageSource<String>(){
