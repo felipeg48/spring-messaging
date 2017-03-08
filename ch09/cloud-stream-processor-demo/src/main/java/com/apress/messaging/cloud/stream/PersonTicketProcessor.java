@@ -15,7 +15,7 @@ import com.apress.messaging.domain.Person;
 import com.apress.messaging.domain.Ticket;
 
 @EnableBinding(Processor.class)
-public class PersonProcessor {
+public class PersonTicketProcessor {
 	
 	private List<String> movieTitles = Arrays.asList("Dead Pool 2","Pitch Perfect 3","Avatar 2","Tarzan 2","Cars 3"); 
 	private Random rand = new Random();
