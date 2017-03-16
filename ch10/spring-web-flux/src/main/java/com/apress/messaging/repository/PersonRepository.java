@@ -9,8 +9,8 @@ import com.apress.messaging.domain.Person;
 
 public interface PersonRepository extends MongoRepository<Person, String>{
 	
-	//CompletableFuture<Person> findById(String id);
+	//CompletableFuture<Person> getById(String id);
 	
 	@Query("{}")
-	Stream<Person> all();
+	Stream<Person> getAll();
 }

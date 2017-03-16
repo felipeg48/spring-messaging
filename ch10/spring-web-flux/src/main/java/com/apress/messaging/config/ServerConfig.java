@@ -2,6 +2,7 @@ package com.apress.messaging.config;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 
 import org.springframework.context.annotation.Bean;
@@ -27,8 +28,10 @@ public class ServerConfig {
 	@Bean
 	RouterFunction<ServerResponse> router(){
 		return RouterFunctions
-				.route(GET("/person/{id}").and(accept(APPLICATION_JSON)), handler::getPerson)
-				.andRoute(GET("/person").and(accept(APPLICATION_JSON)), handler::getAll);
+				.route(GET("/persons/{id}").and(accept(APPLICATION_JSON)), handler::findById)
+				.andRoute(GET("/persons").and(accept(APPLICATION_JSON)), handler::findAll)
+				.andRoute(GET("/person-watcher").and(accept(APPLICATION_JSON)), handler::newPersonLog)
+				.andRoute(POST("/persons").and(accept(APPLICATION_JSON)), handler::createPerson);
 	}
 	
 	@Bean
