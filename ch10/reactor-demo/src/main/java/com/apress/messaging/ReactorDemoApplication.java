@@ -1,9 +1,6 @@
 package com.apress.messaging;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +13,6 @@ import com.apress.messaging.domain.Exchange;
 import com.apress.messaging.service.ExchangeService;
 
 import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Schedulers;
 
 @SpringBootApplication
 public class ReactorDemoApplication {
@@ -30,15 +26,20 @@ public class ReactorDemoApplication {
 	
 	
 	@Bean  
-	CommandLineRunner rxJava(ExchangeService service){
+	CommandLineRunner reactorFlux(ExchangeService service){
 		return args -> {
 			
 			log.info("Reactor >> Flux");
 			Flux<Exchange> fluxExchage = service.getExchangeRates();
-			//fluxExchage
-			//	.subscribe( ex -> log.info(ex.toString()) );
 			
-			// Reactor's Schedulers
+			// 1. Reactor's simple Flux
+			fluxExchage
+				.subscribe( ex -> log.info(ex.toString()) );
+			
+			
+			
+			// 2. Reactor's Schedulers
+			/*
 			fluxExchage
 				.subscribeOn(Schedulers.parallel())
 				.takeLast(10)
@@ -46,8 +47,10 @@ public class ReactorDemoApplication {
 			fluxExchage
 				.subscribeOn(Schedulers.parallel())
 				.subscribe(ex -> log.info(ex.toString()));
+			*/
 			
-			// Custom Executors/Schedulers
+			// 3. Custom Executors/Schedulers
+			/*
 			ExecutorService executor = Executors.newFixedThreadPool(100);
 			fluxExchage
 				.subscribeOn(Schedulers.fromExecutor(executor))
@@ -55,6 +58,7 @@ public class ReactorDemoApplication {
 			
 			executor.awaitTermination(1, TimeUnit.MINUTES);
 			executor.shutdown();
+			*/
 		};
 	}
 }
