@@ -26,7 +26,7 @@ public class SpringWebFluxReactiveApplication {
 	CommandLineRunner process(PersonRepository repo){
 		return args -> {
 			Stream
-			.of("Norma","Ximena","Nayely","Edgar","Auristella","Felipe","Rocio")
+			.of("Laura", "Felipe", "Norma","Ximena", "Nayely", "Edgar", "Auristella", "Rocio", "Simon", "Elvira", "Antonio", "Gaby")
 			.forEach( name -> repo.save(new Person(name,new Random().nextInt(40))));
 			
 			
