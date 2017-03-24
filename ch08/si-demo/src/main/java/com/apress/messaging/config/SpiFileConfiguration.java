@@ -14,12 +14,12 @@ import com.apress.messaging.integration.PersonConverter;
 
 //@Configuration
 //@EnableConfigurationProperties(SpiProperties.class)
-public class SpiFileConfigutation {
+public class SpiFileConfiguration {
 
 	private SpiProperties props;
 	private PersonConverter personConverter;
 	
-	public SpiFileConfigutation(SpiProperties props, PersonConverter personConverter){
+	public SpiFileConfiguration(SpiProperties props, PersonConverter personConverter){
 		this.props = props;
 		this.personConverter = personConverter;
 	}
