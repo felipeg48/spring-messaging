@@ -3,6 +3,8 @@ package com.apress.messaging.handler;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -31,7 +33,7 @@ public class PersonHandler {
 	public Mono<ServerResponse> findById(ServerRequest request) {
 		String personId = request.pathVariable("id");
 		Mono<ServerResponse> notFound = ServerResponse.notFound().build();
-		Mono<Person> personMono = Mono.just(this.repo.findOne(personId)); // Mono.fromFuture(this.repo.findById(personId));
+		Mono<Optional<Person>> personMono = Mono.just(this.repo.findOne(personId)); // Mono.fromFuture(this.repo.findById(personId));
 
 		return personMono.then(person -> ServerResponse.ok().contentType(APPLICATION_JSON).body(fromObject(person)))
 				.otherwiseIfEmpty(notFound);

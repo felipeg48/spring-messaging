@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebEmmitterApplication {
+public class WebEmitterApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebEmmitterApplication.class, args);
+		SpringApplication.run(WebEmitterApplication.class, args);
 	}
 }

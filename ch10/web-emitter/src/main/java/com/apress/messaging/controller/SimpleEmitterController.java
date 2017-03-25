@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 
 @RestController
-public class SimpleEmmiterController {
+public class SimpleEmitterController {
 	
 	private final Map<String, SseEmitter> names = new ConcurrentHashMap<>();
 
