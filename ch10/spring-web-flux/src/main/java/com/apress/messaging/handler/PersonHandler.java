@@ -19,7 +19,8 @@ import reactor.core.publisher.Mono;
 @Component
 public class PersonHandler {
 	PersonRepository repo;
-	EmitterProcessor<Person> stream = EmitterProcessor.<Person>create(); //.connect();
+	@SuppressWarnings("deprecation")
+	EmitterProcessor<Person> stream = EmitterProcessor.<Person>create().connect();
 	
 	PersonHandler(PersonRepository repo) {
 		this.repo = repo;
